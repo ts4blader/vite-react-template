@@ -211,6 +211,58 @@ npm run build
 
 The build output is optimized and ready for deployment to any static hosting service.
 
+## Start Over Installation Guide
+
+This guide walks you through creating a fresh React project with the same stack and configuration as this template.
+
+### 1. Initialize Project with shadcn/ui
+
+Go to [shadcn/ui New Project](https://ui.shadcn.com/docs/new) to generate your initialization command, or use this example:
+
+```bash
+npx shadcn@latest create --preset "https://ui.shadcn.com/init?base=radix&style=nova&baseColor=neutral&theme=neutral&iconLibrary=lucide&font=inter&menuAccent=subtle&menuColor=default&radius=default&template=next&rtl=false" --template next
+```
+
+### 2. Set Node Version
+
+Save your current Node.js version to `.nvmrc`:
+
+```bash
+node -v > .nvmrc
+```
+
+### 3. Install Core Dependencies
+
+Install the essential packages for this template:
+
+```bash
+npm install immer ofetch zod react-hook-form @tanstack/react-query zustand react-use
+```
+
+### 4. Project Setup
+
+After installation, your project should have:
+
+- **React 19** with TypeScript
+- **shadcn/ui** components with Tailwind CSS
+- **State Management**: Zustand for global state
+- **Data Fetching**: TanStack Query with ofetch
+- **Form Handling**: React Hook Form with Zod validation
+- **Utilities**: react-use for common hooks
+
+### 5. Development Commands
+
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run preview      # Preview production build
+npm run lint         # Run ESLint
+```
+
+### 6. Verify Installation
+
+Open `http://localhost:5173` in your browser to ensure everything is working correctly.
+
 ## Contributing
 
 1. Follow the existing code patterns and conventions
