@@ -1,4 +1,4 @@
-import { ComponentExample } from "@/components/component-example"
+import { ComponentExample } from "@/components/feat/component-example"
 
 export function App() {
   return <ComponentExample />
