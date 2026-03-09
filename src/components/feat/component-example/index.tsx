@@ -53,6 +53,12 @@ import {
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import {
+  SearchBar,
+  SearchBarInput,
+  SearchBarContent,
+  SearchBarItem,
+} from "@/components/ui/search-bar"
+import {
   PlusIcon,
   BluetoothIcon,
   MoreVerticalIcon,
@@ -88,6 +94,7 @@ export function ComponentExample() {
     <ExampleWrapper>
       <CardExample />
       <FormExample />
+      <SearchBarExample />
     </ExampleWrapper>
   )
 }
@@ -140,6 +147,72 @@ function CardExample() {
             Warning
           </Badge>
         </CardFooter>
+      </Card>
+    </Example>
+  )
+}
+
+function SearchBarExample() {
+  const [searchValue, setSearchValue] = React.useState<Record<string, any>>({
+    query: "",
+    filter: "all",
+    category: "",
+  })
+  const [input, setInput] = React.useState("")
+
+  const handleSetValue = (value: Record<string, any>) => {
+    setSearchValue(value)
+  }
+
+  return (
+    <Example title="SearchBar">
+      <Card className="w-full max-w-md">
+        <CardHeader>
+          <CardTitle>Search Example</CardTitle>
+          <CardDescription>
+            Interactive search with popover dropdown and filters
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <SearchBar
+            value={searchValue}
+            setValue={handleSetValue}
+            input={input}
+            setInput={setInput}
+          >
+            <SearchBarInput />
+            <SearchBarContent>
+              <SearchBarItem name="query">Search</SearchBarItem>
+              <SearchBarItem name="filter" value="all">
+                All Results
+              </SearchBarItem>
+              <SearchBarItem name="filter" value="recent">
+                Recent
+              </SearchBarItem>
+              <SearchBarItem name="filter" value="popular">
+                Popular
+              </SearchBarItem>
+
+              <div className="border-t pt-2">
+                <SearchBarItem name="category" value="documents">
+                  Documents
+                </SearchBarItem>
+                <SearchBarItem name="category" value="images">
+                  Images
+                </SearchBarItem>
+                <SearchBarItem name="category" value="videos">
+                  Videos
+                </SearchBarItem>
+              </div>
+            </SearchBarContent>
+          </SearchBar>
+          <div className="mt-4 p-3 bg-muted rounded">
+            <p className="text-sm font-medium">Current State:</p>
+            <pre className="text-xs mt-1">
+              {JSON.stringify(searchValue, null, 2)}
+            </pre>
+          </div>
+        </CardContent>
       </Card>
     </Example>
   )
